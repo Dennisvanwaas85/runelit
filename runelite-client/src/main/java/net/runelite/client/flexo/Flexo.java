@@ -34,68 +34,28 @@ package net.runelite.client.flexo;
 
 import java.awt.*;
 import java.awt.event.InputEvent;
-import java.awt.geom.Ellipse2D;
-import java.awt.image.DirectColorModel;
 import java.awt.peer.RobotPeer;
 import java.util.Random;
 import java.util.logging.Logger;
 
 import com.github.joonasvali.naturalmouse.api.MouseMotionFactory;
+import net.runelite.api.Client;
 import net.runelite.client.plugins.aaaflexo.FlexoOverlay;
 import net.runelite.client.ui.ClientUI;
 import sun.awt.ComponentFactory;
 import sun.awt.SunToolkit;
 
-/**
- * This class is used to generate native system input events
- * for the purposes of test automation, self-running demos, and
- * other applications where control of the mouse and keyboard
- * is needed. The primary purpose of Robot is to facilitate
- * automated testing of Java platform implementations.
- * <p>
- * Using the class to generate input events differs from posting
- * events to the AWT event queue or AWT components in that the
- * events are generated in the platform's native input
- * queue. For example, <code>Robot.mouseMove</code> will actually move
- * the mouse cursor instead of just generating mouse move events.
- * <p>
- * Note that some platforms require special privileges or extensions
- * to access low-level input control. If the current platform configuration
- * does not allow input control, an <code>AWTException</code> will be thrown
- * when trying to construct Robot objects. For example, X-Window systems
- * will throw the exception if the XTEST 2.2 standard extension is not supported
- * (or not enabled) by the X server.
- * <p>
- * Applications that use Robot for purposes other than self-testing should
- * handle these error conditions gracefully.
- *
- * @author      Robi Khan
- * @since       1.3
- */
 public class Flexo extends java.awt.Robot{
+  public static double scale;
+  public static Client client;
+  public static int fixedWidth = 765;
+  public static int fixedHeight = 503;
   public static boolean isStretched;
   public static int minDelay = 45;
   public static MouseMotionFactory currentMouseMotionFactory;
   private static final int MAX_DELAY = 60000;
   private RobotPeer peer;
-  private boolean isAutoWaitForIdle = false;
-  private int autoDelay = 0;
   private static int LEGAL_BUTTON_MASK = 0;
-
-  private DirectColorModel screenCapCM = null;
-
-  /**
-   * Constructs a Robot object in the coordinate system of the primary screen.
-   * <p>
-   *
-   * @throws  AWTException if the platform configuration does not allow
-   * low-level input control.  This exception is always thrown when
-   * GraphicsEnvironment.isHeadless() returns true
-   * @throws  SecurityException if <code>createRobot</code> permission is not granted
-   * @see     java.awt.GraphicsEnvironment#isHeadless
-   * @see     SecurityManager#checkPermission
-   * @see     AWTPermission
-   */
 
   public Flexo() throws AWTException {
     if (GraphicsEnvironment.isHeadless()) {
@@ -151,11 +111,6 @@ public class Flexo extends java.awt.Robot{
 
   private RobotDisposer disposer;
 
-  /**
-   * Moves mouse pointer to given screen coordinates.
-   * @param x         X position
-   * @param y         Y position
-   */
   public synchronized void mouseMove(int x, int y) {
     try {
       //TODO: Must be better way to determine titlebar width

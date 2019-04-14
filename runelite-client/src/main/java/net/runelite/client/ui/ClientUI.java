@@ -124,8 +124,8 @@ public class ClientUI
 	private BufferedImage sidebarClosedIcon;
 	static public ContainableFrame frame;
 	private JPanel navContainer;
-	private PluginPanel pluginPanel;
-	private ClientPluginToolbar pluginToolbar;
+	public static PluginPanel pluginPanel;
+	public static ClientPluginToolbar pluginToolbar;
 	private ClientTitleToolbar titleToolbar;
 	private JButton currentButton;
 	private NavigationButton currentNavButton;

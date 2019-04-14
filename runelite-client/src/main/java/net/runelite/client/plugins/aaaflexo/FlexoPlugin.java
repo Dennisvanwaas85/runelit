@@ -65,7 +65,7 @@ public class FlexoPlugin extends Plugin {
     @Subscribe
     public void onGameTick(GameTick event) {
         Flexo.isStretched = client.isStretchedEnabled();
-        FlexoUtils.scale = configManager.getConfig(StretchedModeConfig.class).scalingFactor();
+        Flexo.scale = configManager.getConfig(StretchedModeConfig.class).scalingFactor();
     }
 
     private void updateMouseMotionFactory() {

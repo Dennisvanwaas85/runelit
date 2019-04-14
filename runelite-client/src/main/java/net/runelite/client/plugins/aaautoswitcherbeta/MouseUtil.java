@@ -11,6 +11,7 @@ import net.runelite.api.queries.InventoryWidgetItemQuery;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.flexo.Flexo;
+import net.runelite.client.flexo.FlexoMouse;
 import net.runelite.client.flexo.FlexoUtils;
 import net.runelite.client.plugins.stretchedmode.StretchedModeConfig;
 import net.runelite.client.util.QueryRunner;
@@ -57,6 +58,8 @@ public class MouseUtil
 
 	public void doClick(int id)
 	{
+		if (Flexo.client==null)
+			Flexo.client = client;
 		double scale = 1 + ((double) smConfig.scalingFactor() / 100);
 		Flexo bot = null;
 		try
@@ -85,12 +88,12 @@ public class MouseUtil
 						case "Group 2":
 						case "Group 3":
 						case "Group 4":
-							Rectangle clickArea = FlexoUtils.getItemArea(item, 3);
+							Rectangle clickArea = FlexoUtils.getInvItemClickArea(item);
 							if (clickArea.getY() <= 0)
 							{
 								clickPoint = new Point(0, 0);
 							}
-							clickPoint = FlexoUtils.getClickPoint(clickArea);
+							clickPoint = FlexoMouse.getClickPoint(clickArea);
 							System.out.println(clickPoint);
 							if (clickPoint.getX() <= 0)
 							{
