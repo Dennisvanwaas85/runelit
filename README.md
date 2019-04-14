@@ -7,7 +7,8 @@ RuneLit is a fork of [RuneLite](https://github.com/runelite/runelite) that inclu
 
 ### Bytecode Modified Injected Client  
 Caches the injected client at runtime, and attempts to load a modified copy if it exists.  
-This allows you to undo a lot of the restrictions the RL team have imposed. Currently included bytecode patches are:  
+This allows you to undo a lot of the restrictions the RL team have imposed. Currently included bytecode patches are: 
+  
 RSActor.animationChanged is no longer filtered.  
 ProjectileMoved is no longer filtered.  
 Player.getSkullIcon is no longer restricted to localPlayer.  
