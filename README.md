@@ -4,6 +4,16 @@
 RuneLit is a fork of [RuneLite](https://github.com/runelite/runelite) that includes additional plugins  
   
 # Notable Features:
+
+### Bytecode Modified Injected Client  
+Caches the injected client at runtime, and attempts to load a modified copy if it exists.  
+This allows you to undo a lot of the restrictions the RL team have imposed. Currently included bytecode patches are:  
+RSActor.animationChanged is no longer filtered.  
+ProjectileMoved is no longer filtered.  
+Player.getSkullIcon is no longer restricted to localPlayer.  
+Client.getCollisionMaps is no longer filtered.  
+RSActor.getAnimation is no longer filtered.  
+
   
 ### Flexo, the Robot  
 A very flexible mouse input assistant. Includes a plugin for on the fly configuration.  
@@ -15,7 +25,7 @@ Example of settings in action
 
   
 *Auto Pray Flick  
-*Auto Switcher (WIP) Currently only works in resizable, not stretched mode.
+*Auto Switcher
 
 ### How To Use
 To use RuneLit, you can build the project yourself by following RuneLite's [guide to building with IntelliJ IDEA](https://github.com/runelite/runelite/wiki/Building-with-IntelliJ-IDEA).
